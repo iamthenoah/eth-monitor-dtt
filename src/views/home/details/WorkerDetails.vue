@@ -24,12 +24,14 @@ import { defineComponent } from 'vue'
 import { Worker } from '@/apis/interfaces'
 import { fetchWorkers } from '@/apis/EthermineApi'
 import MiningStatistics from '@/views/home/details/MiningStatistics.vue'
+import WorkersList from '@/views/home/details/WorkersList.vue'
 import InfoBanner from '@/components/generics/InfoBanner.vue'
 import ErrorBox from '@/components/generics/ErrorBox.vue'
 
 export default defineComponent({
     components: {
         MiningStatistics,
+        WorkersList,
         InfoBanner,
         ErrorBox
     },
