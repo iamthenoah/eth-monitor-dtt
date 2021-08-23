@@ -5,7 +5,7 @@ type ExtraRouteMetaData = { name?: string; }
 const routes: Array<RouteRecordRaw & ExtraRouteMetaData> = [
     {
         path: '/',
-        redirect: '/discover',
+        redirect: '/miners',
         component: () => import('../views/Home.vue'),
         children: [
             {
