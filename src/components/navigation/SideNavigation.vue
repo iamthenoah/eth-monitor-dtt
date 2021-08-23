@@ -23,7 +23,7 @@
                 :selected="isCurrent('Discover')"
                 @click="toggleSideMenu(false)"
             >
-                <Badge text="Random Worker" color="red"/>
+                <Badge text="New!" color="red"/>
             </menu-button>
         </div>
         <div>

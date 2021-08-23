@@ -19,11 +19,11 @@
                     <section class="flex-container">
                         <div class="flex-container">
                             <p>Reported Hashrate</p>
-                            <CountUp :value="worker.reportedHashrate / 10000000" :options="{ durations: 1.5, prefix: 'MH/s ' }" />
+                            <CountUp :value="worker.reportedHashrate / 1000000" :options="{ durations: 1.5, prefix: 'MH/s ' }" />
                         </div>
                         <div class="flex-container">
                             <p>Current Hashrate</p>
-                            <CountUp :value="worker.currentHashrate / 10000000" :options="{ durations: 1.5, prefix: 'MH/s ' }" />
+                            <CountUp :value="worker.currentHashrate / 1000000" :options="{ durations: 1.5, prefix: 'MH/s ' }" />
                         </div>
                     </section>
                     <div class="flex-container">
