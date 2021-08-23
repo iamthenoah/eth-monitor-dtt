@@ -32,7 +32,7 @@
                 route="/account"
                 text="Account"
                 icon="account_circle"
-                :selected="isCurrent('Preferences') || isCurrent('Profile')"
+                :selected="isCurrent('Account')"
                 @click="toggleSideMenu(false)"
             ></menu-button>
             <menu-button

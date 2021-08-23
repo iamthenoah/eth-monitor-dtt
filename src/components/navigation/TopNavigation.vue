@@ -45,10 +45,10 @@ export default defineComponent({
         padding: 10px;
         display: grid;
         grid-template-columns: auto 1fr auto;
-        grid-template-areas: "mb sb sb aa";
+        grid-template-areas: "mb sb aa";
         justify-content: space-between;
         align-items: center;
-        gap: 25px;
+        gap: 25%;
     }
 
     .nav-auth-actions {

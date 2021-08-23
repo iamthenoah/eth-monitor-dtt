@@ -8,17 +8,17 @@
                         <button class="btn red-color-bg outline" @click="logout()">Logout</button>
                     </section-title>
                     <div class="flex-container">
-                        <div class="large">
+                        <div class="account-inputs large">
                             <div class="space"><label>Username</label></div>
                             <input type="text" :value="User.username">
                         </div>
-                        <div class="large">
+                        <div class="account-inputs large">
                             <div class="space"><label>Email</label></div>
                             <input type="text" :value="User.email">
                         </div>
-                        <div class="large">
-                            <div class="space"><label>Username</label></div>
-                            <input type="text" :value="User.username">
+                        <div class="account-inputs large">
+                            <div class="space"><label>Preferences</label></div>
+                            <input type="text" :value="User">
                         </div>
                     </div>
                 </div>
@@ -89,3 +89,11 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+
+    .account-inputs {
+        min-width: 300px;
+    }
+
+</style>

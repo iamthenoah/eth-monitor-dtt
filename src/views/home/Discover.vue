@@ -1,13 +1,10 @@
 <template>
     <div class="content">
         <PathRoot :paths="$route.fullPath.split('/').filter(p => p)"/>
-        <section class="random-worker-container">
-            <div v-if="workerWithAddress !== null">
-                <div :class="[isPending && 'disabled']">
-                    <WorkerDetailsWidget :worker="workerWithAddress[0]" :address="workerWithAddress[1]"/>
-                </div>
+        <section class="random-worker-container" v-if="workerWithAddress !== null">
+            <div :class="[isPending && 'disabled']">
+                <WorkerDetailsWidget :worker="workerWithAddress[0]" :address="workerWithAddress[1]"/>
             </div>
-            <LoadingSquare v-else/>
             <div class="flex-container">
                 <button class="btn default-color-bg large" @click="fetchRandomWorker()">
                     <span class="material-icons">cached</span>
@@ -19,6 +16,7 @@
                 </button>
             </div>
         </section>
+        <LoadingSquare v-else/>
     </div>
 </template>
 
