@@ -2,69 +2,67 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 type ExtraRouteMetaData = { name?: string; }
 
-const lazyLoad = (path: string) : unknown => import(path)
-
 const routes: Array<RouteRecordRaw & ExtraRouteMetaData> = [
     {
         path: '/',
         redirect: '/discover',
-        component: () => lazyLoad('../views/Home.vue'),
+        component: () => import('../views/Home.vue'),
         children: [
             {
                 name: 'Miners',
                 path: '/miners',
-                component: () => lazyLoad('../views/home/Miners.vue'),
+                component: () => import('../views/home/Miners.vue'),
                 children: [
                     {
                         name: 'Miners',
                         path: '/miners/:address',
-                        component: () => lazyLoad('../views/home/details/MinerDetails.vue')
+                        component: () => import('../views/home/details/MinerDetails.vue')
                     }
                 ]
             },
             {
                 name: 'Workers',
                 path: '/workers',
-                component: () => lazyLoad('../views/home/Workers.vue'),
+                component: () => import('../views/home/Workers.vue'),
                 children: [
                     {
                         name: 'Workers',
                         path: '/workers/:address/:name',
-                        component: () => lazyLoad('../views/home/details/WorkerDetails.vue')
+                        component: () => import('../views/home/details/WorkerDetails.vue')
                     }
                 ]
             },
             {
                 name: 'Discover',
                 path: '/discover',
-                component: () => lazyLoad('../views/home/Discover.vue')
+                component: () => import('../views/home/Discover.vue')
             },
             {
                 name: 'Account',
                 path: '/account',
-                component: () => lazyLoad('../views/home/Account.vue')
+                component: () => import('../views/home/Account.vue')
             },
             {
                 name: 'Not Found',
                 path: '/:catchAll(.*)',
-                component: () => lazyLoad('../views/error/NotFound.vue')
+                component: () => import('../views/error/NotFound.vue')
             }
         ]
     },
     {
         path: '/authenticate',
         redirect: '/authenticate/login',
-        component: () => lazyLoad('../views/Auth.vue'),
+        component: () => import('../views/Auth.vue'),
         children: [
             {
                 name: 'Login',
                 path: '/authenticate/login',
-                component: () => lazyLoad('../views/auth/Login.vue')
+                component: () => import('../views/auth/Login.vue')
             },
             {
                 name: 'Register',
                 path: '/authenticate/register',
-                component: () => lazyLoad('../views/auth/Register.vue')
+                component: () => import('../views/auth/Register.vue')
             }
         ]
     }

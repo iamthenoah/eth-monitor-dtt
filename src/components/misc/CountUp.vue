@@ -2,7 +2,8 @@
 	<span/>
 </template>
 
-<script lang="ts">
+<script>
+/* eslint-disable */
 import { CountUp } from 'countup.js'
 
 export default {
@@ -17,31 +18,30 @@ export default {
         },
         options: {
             type: Object,
-            default: () : Record<string, unknown> => { return {} }
+            default: () => { return {} }
         }
     },
     data () { // eslint-disable-line
-        const instance = null as unknown as CountUp
-        return { instance }
+        return { instance: null }
     },
     mounted () { // eslint-disable-line
         this.create()
     },
     watch: {
         value: {
-            handler (value: number | string) : void {
+            handler (value) {
                 if (this.instance) this.instance.update(value)
             }
         },
         options: {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            handler (options: Record<string, unknown>) : void {
+            handler (options) {
                 this.create()
             }
         }
     },
     methods: {
-        create: function () : void {
+        create: function () {
             const options = this.options
             if (options.duration === undefined) { options.duration = 1 }
 
