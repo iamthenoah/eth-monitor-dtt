@@ -30,12 +30,17 @@ export default defineComponent({
         return { address: '' }
     },
     methods: {
-        search: function () : void { if (this.address) this.$router.push('/miners/' + this.address) }
+        search: function () : void {
+            if (this.address) {
+                this.$router.push('/miners/' + this.address)
+                this.address = ''
+            }
+        }
     }
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
     #mb { grid-area: mb; }
     #sb { grid-area: sb; }
@@ -48,7 +53,7 @@ export default defineComponent({
         grid-template-areas: "mb sb aa";
         justify-content: space-between;
         align-items: center;
-        gap: 25%;
+        gap: 25px;
     }
 
     .nav-auth-actions {
