@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, Segoe UI,Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji,Segoe UI Emoji;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+section {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+    height: auto;
+}
+
+a,
+input,
+button,
+select {
+    text-decoration: none !important;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input {
+    -webkit-user-select: text; // ios
+    left: 0;
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 3px;
+    background: whitesmoke;
+    border: transparent solid 1px;
+    margin: 12.5px 0;
+}
+
+::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.75;
+}
+
+label { 
+    user-select: none;
+    font-weight: bold;
+    font-size: 13px;
+    color: grey;
+    font-weight: 500;
+}
+
+ul, li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+li {
+    display: inline;
+}
+
+p, button {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+p {
+    color: grey;
+}
+
+span {
+    white-space: pre;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: whitesmoke; 
+}
+
+img {
+    user-select: none;
+    pointer-events: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 24px;
+}
+
+h4 {
+    font-weight: 900;
+    font-size: 24px;
+}

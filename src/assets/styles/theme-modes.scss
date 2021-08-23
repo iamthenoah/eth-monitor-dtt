@@ -1,0 +1,83 @@
+$modes: (
+    'light': (
+        'primary': #fff,
+        'secondary': #1F2937,
+        'secondary-lightened': #374151,
+        'tertiery': #f9f9f9,
+        'text': #000,
+        'text-secondary': grey,
+        'text-inverted': #fff
+    ),
+
+    'dim': (
+        'primary': #2D333B,
+        'secondary': #2D333B,
+        'secondary-lightened': #373e47,
+        'tertiery': #22272D,
+        'text': rgba(#fff, 0.75),
+        'text-secondary': rgba(#fff, 0.75),
+        'text-inverted': rgba(#fff, 0.75),
+    ),
+
+    'dark': (
+        'primary': #171C23,
+        'secondary': #171C23,
+        'secondary-lightened': #171C23,
+        'tertiery': #0D1117,
+        'text': #fff,
+        'text-secondary': #fff,
+        'text-inverted': #fff,
+    )
+);
+
+@each $mode, $value in $modes {
+
+    .theme-mode-#{$mode} {
+
+        @each $tier, $color in $value {
+
+            .bg-#{$tier},
+            .bg-#{$tier}-hover:hover {
+                background: $color;
+            }
+        }
+    
+        .path-root {
+            li:not(:last-child), li:not(:last-child)::after {
+                color: map-get($value, 'text');
+            }
+        }
+
+        h1, h2, h3, h4, h5, h6, div, input, label, .ui-icon, .btn { 
+            color: map-get($value, 'text');
+        }
+        
+        .comment, p {
+            color: map-get($value, 'text-secondary');
+        }
+
+        .text-inverted {
+            color: map-get($value, 'text-inverted') !important;
+        }
+
+        .placeholder, .transparent {
+            color: map-get($value, 'tertiery') !important;
+        }
+
+        hr, .screen, .placeholder::after  {
+            background: map-get($value, 'primary') !important;
+        }
+
+        aside {
+            background: map-get($value, 'secondary') !important;
+        }
+        
+        main, input, .placeholder {
+            background: map-get($value, 'tertiery') !important;
+        }
+
+        .outline, .screen {
+            box-shadow: 0 0 0 1px lighten(map-get($value, 'primary'), 5);
+        }
+    }
+}

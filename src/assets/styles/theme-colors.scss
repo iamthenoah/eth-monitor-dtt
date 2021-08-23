@@ -1,0 +1,47 @@
+$colors: (
+    'blue': #6581ff,
+    'red': #ff5b56,
+    'green': #35d08f,
+    'orange': #ffaf19,
+    'purple': #921df1,
+    'salmon': #ff7d7d
+);
+
+@each $color, $value in $colors {
+
+    .#{$color}-color {
+        color: $value !important;
+    }
+    
+    .#{$color}-color-bg {
+        background: $value !important;
+        color: white !important;
+    }
+
+    .#{$color}-color-bg-hover:hover {
+        background: $value !important;
+    }
+
+    .#{$color}-color-outline {
+        box-shadow: 0 0 0 1pt $value;
+    }
+    
+    .theme-color-#{$color} {
+        .default-color { 
+            color: $value !important;
+        }
+
+        .default-color-bg {
+            background: $value !important;
+            color: white !important;
+        }
+
+        .default-color-bg-hover:hover {
+            background: $value !important;
+        }
+        
+        .default-color-outline, input:focus {
+            box-shadow: 0 0 0 1pt $value !important;
+        }
+    }
+}
