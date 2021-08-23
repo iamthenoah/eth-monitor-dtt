@@ -28,8 +28,8 @@
                     </section>
                     <div class="flex-container">
                         <div></div>
-                        <button class="btn default-color-bg">
-                            <router-link :to="`/workers/${address}/${worker.worker}`" class="default-color-bg">View More Details</router-link>
+                        <button class="btn outline">
+                            <router-link :to="`/workers/${address}/${worker.worker}`" class="default-color">View More Details</router-link>
                         </button>
                     </div>
                 </div>

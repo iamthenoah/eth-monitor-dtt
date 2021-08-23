@@ -9,15 +9,15 @@
                     </section-title>
                     <div class="flex-container">
                         <div class="large">
-                            <label>Username</label>
+                            <div class="space"><label>Username</label></div>
                             <input type="text" :value="User.username">
                         </div>
                         <div class="large">
-                            <label>Email</label>
+                            <div class="space"><label>Email</label></div>
                             <input type="text" :value="User.email">
                         </div>
                         <div class="large">
-                            <label>Username</label>
+                            <div class="space"><label>Username</label></div>
                             <input type="text" :value="User.username">
                         </div>
                     </div>
