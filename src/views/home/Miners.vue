@@ -2,7 +2,7 @@
     <div class="content">
         <PathRoot :paths="$route.fullPath.split('/').filter(p => p)"/>
         <section>
-            <SectionTitle title="Addresses" icon="home"/>
+            <SectionTitle title="ETH Addresses" icon="home"/>
             <div class="flex-container" :class="[!isDataLoaded && 'disabled']">
                 <MinerWidget
                     v-for="(address, index) in miningAddresses"

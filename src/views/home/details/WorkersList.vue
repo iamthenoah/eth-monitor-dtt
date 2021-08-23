@@ -1,7 +1,7 @@
 <template>
     <section-title title="Workers" icon="engineering" id="focus-workers-list">
-        <button v-show="workers.length !== 0" class="btn outline bg-primary" @click="sortByNextProperty()">
-            <span class="material-icons">cached</span>{{ getFormatedProperyText }}
+        <button v-show="workers.length !== 0" class="btn outlined bg-primary" @click="sortByNextProperty()">
+            Sorted by {{ getFormatedProperyText }}
         </button>
     </section-title>
     <div v-if="workers.length !== 0">
