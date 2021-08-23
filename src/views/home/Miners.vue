@@ -12,7 +12,6 @@
                 />
             </div>
         </section>
-        <hr>
         <section id="focus-miner-stats">
             <router-view @dataLoaded="onDataLoaded($event)" :address="selectedAddress"></router-view>
         </section>
@@ -21,8 +20,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { getRandomAddresses } from '@/apis/FakeAuthApi'
 import { Miner } from '@/apis/interfaces'
+import { getRandomAddresses } from '@/apis/FakeAuthApi'
 import SectionTitle from '@/components/generics/SectionTitle.vue'
 import MinerWidget from '@/components/generics/MinerWidget.vue'
 import PathRoot from '@/components/generics/PathRoot.vue'
@@ -34,23 +33,32 @@ export default defineComponent({
         PathRoot
     },
     data () {
-        // use random ETH addresses if not authed
-        let miningAddresses: string[] = []
-
-        if (this.$store.getters.isAuthenticated) {
-            const miners: Miner[] = this.$store.getters.User.miners
-            miners.forEach(m => miningAddresses.push(m.address))
-        } else {
-            miningAddresses = getRandomAddresses()
-        }
-
-        // ensure that route always has a :address param set
-        this.$router.push('/miners/' + miningAddresses[0])
+        const miningAddresses: string[] = []
 
         return {
             miningAddresses,
-            selectedAddress: miningAddresses[0],
+            selectedAddress: '',
             isDataLoaded: true
+        }
+    },
+    mounted() { // eslint-disable-line
+
+        // use random ETH addresses if not authed
+        if (this.$store.getters.isAuthenticated) {
+            const miners: Miner[] = this.$store.getters.User.miners
+            miners.forEach(m => this.miningAddresses.push(m.address))
+        } else {
+            this.miningAddresses = getRandomAddresses()
+        }
+
+        let { address } = this.$route.params
+        if (Array.isArray(address)) address = address[0]
+
+        // ensure that route always has a :address param set
+        if (!address) {
+            this.$router.push('/miners/' + this.miningAddresses[0])
+        } else {
+            this.selectedAddress = Array.isArray(address) ? address[0] : address
         }
     },
     methods: {

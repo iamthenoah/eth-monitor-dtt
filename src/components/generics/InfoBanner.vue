@@ -1,5 +1,5 @@
 <template>
-    <div class="container screen center flex-container">
+    <div class="container screen center rounded flex-container">
         <p :class="[placeholder && 'placeholder']">{{ comment }}</p>
         <h3 :class="[placeholder && 'placeholder']">{{ title }}</h3>
     </div>

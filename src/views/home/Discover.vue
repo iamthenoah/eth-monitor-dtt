@@ -48,8 +48,8 @@ export default defineComponent({
         fetchRandomWorker: function () : void {
             let address = ''
             this.isPending = true
-            // this.workerWithAddress = null as unknown as [Worker, string]
 
+            // use random ETH addresses if not authed
             if (this.$store.getters.isAuthenticated) {
                 const miners: Miner[] = this.$store.getters.User.miners
                 if (miners[0].workers) address = miners[0].workers[0].worker

@@ -1,9 +1,13 @@
 <template>
     <nav class="top-nav-container screen bg-primary">
-        <div @click="toggleSideMenu()">
+        <div @click="toggleSideMenu()" id="mb">
             <span class="material-icons ui-icon">menu</span>
         </div>
-        <div class="bezels">
+        <div class="input-icon-left" id="sb">
+            <span class="material-icons" @click="search()">search</span>
+            <input type="text" v-model="address">
+        </div>
+        <div id="aa" class="nav-auth-actions">
             <div v-if="isAuthenticated">
                 <button class="btn default-color-bg">
                     <span class="material-icons">account_circle</span>
@@ -18,14 +22,46 @@
     </nav>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    data () {
+        return { address: '' }
+    },
+    methods: {
+        search: function () : void { if (this.address) this.$router.push('/miners/' + this.address) }
+    }
+})
+</script>
+
 <style lang="scss" scoped>
 
+    #mb { grid-area: mb; }
+    #sb { grid-area: sb; }
+    #aa { grid-area: aa; }
+
     .top-nav-container {
-        display: inline-flex;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "mb sb sb aa";
         justify-content: space-between;
         align-items: center;
-        padding-right: 20px;
-        padding: 10px;
+        gap: 25px;
+    }
+
+    .nav-auth-actions {
+        float: left;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .top-nav-container {
+            gap: 5px;
+            grid-template-areas:
+                "mb x aa"
+                "sb sb sb";
+        }
     }
 
 </style>

@@ -13,7 +13,7 @@
             </section>
         </div>
         <section>
-            <label>Email</label>
+            <div class="space"><label>Email</label></div>
             <input type="text" placeholder="name@domain.com" v-model="form.email">
         </section>
     </section>
@@ -25,12 +25,12 @@
             </section>
         </div>
         <section>
-            <label>Choose password</label>
-            <div class="input-icon-right">
+            <div class="space"><label>Choose password</label></div>
+            <div class="space input-icon-right">
                 <input :type="viewPassword ? 'text' : 'password'" placeholder="alpha1234" v-model="form.passwords[0]">
                 <span @click="viewPassword = !viewPassword" class="material-icons ui-icon">{{ viewPassword ? 'visibility' : 'visibility_off' }}</span>
             </div>
-            <label>Repeat password</label>
+            <div class="space"><label>Repeat password</label></div>
             <input :type="viewPassword ? 'text' : 'password'" placeholder="alpha1234" v-model="form.passwords[1]">
         </section>
     </section>

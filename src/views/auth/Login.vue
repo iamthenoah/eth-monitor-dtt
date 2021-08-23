@@ -6,10 +6,10 @@
         </section>
     </section>
     <section>
-        <label>Email</label>
-        <input type="text" placeholder="name@domain.com" v-model="form.email">
-        <label>Password</label>
-        <div class="input-icon-right">
+        <div class="space"><label>Email</label></div>
+        <input class="space" type="text" placeholder="name@domain.com" v-model="form.email">
+        <div class="space"><label>Password</label></div>
+        <div class="space input-icon-right">
             <input :type="viewPassword ? 'text' : 'password'" placeholder="password" v-model="form.password">
             <span @click="viewPassword = !viewPassword" class="material-icons ui-icon">{{ viewPassword ? 'visibility' : 'visibility_off' }}</span>
         </div>

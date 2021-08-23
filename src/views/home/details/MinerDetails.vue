@@ -1,6 +1,6 @@
 <template>
     <div v-if="error">
-        <ErrorBox :errorContext="error.message" />
+        <ErrorBox :errorContext="error.message" :errorMessage="error.status" />
     </div>
     <div v-else>
         <section>
@@ -39,7 +39,7 @@ export default defineComponent({
         return { miner, error }
     },
     mounted () {
-        this.fetchData(this.address)
+        if (this.address) this.fetchData(this.address)
         if (!this.miner) this.$emit('dataLoaded', false)
     },
     watch: {

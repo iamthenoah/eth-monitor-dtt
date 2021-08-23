@@ -139,8 +139,9 @@
 
 .input-icon-right,
 .input-icon-left {
-	position: relative;
-
+    position: relative;
+    height: 35px;
+    
 	span {
 		position: absolute;
 		top: 50%;
@@ -158,6 +159,12 @@
 	span {
 		right: 0;
 		margin-right: 2px;
+	}
+}
+
+.input-icon-left {
+	input {
+		padding-left: 37.5px;
 	}
 }
 
