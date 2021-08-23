@@ -48,7 +48,7 @@ const fakeAuthApi = async (credentials: UserCredentials) : Promise<User> => {
 
                 resolve(user)
             }
-        }, randomInt(3000, 6000))
+        }, randomInt(1000, 3000))
     })
 }
 
