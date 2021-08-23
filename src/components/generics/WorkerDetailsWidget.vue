@@ -2,7 +2,7 @@
     <div class="screen container rounded outline">
         <div class="worker-details-widget-container">
             <div class="flex-container">
-                <div class="worker-icon-ring center bg-tertiery" :class="[placeholder && 'placeholder']">
+                <div class="worker-icon-ring center bg-tertiery">
                     <span class="material-icons">engineering</span>
                 </div>
                 <div class="worker-info">
