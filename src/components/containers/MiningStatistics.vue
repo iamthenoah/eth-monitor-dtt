@@ -2,79 +2,78 @@
     <section>
         <SectionTitle title="Supervision" icon="donut_large" />
         <div v-if="stats" class="flex-container">
-            <widget
+            <Widget
                 icon="hourglass_full"
                 text="Uptime"
                 color="orange"
                 :value="toDaySince(stats.time * 1000)"
                 :options="{ duration: 1.5 }"
-            >
-            </widget>
-            <widget
+            />
+            <Widget
                 icon="history"
                 text="Last Updated"
                 color="green"
                 :value="toDaySince(stats.lastSeen * 1000)"
                 :options="{ duration: 1.5 }"
-            ></widget>
+            />
         </div>
         <div v-else class="flex-container">
-            <widget placeholder></widget>
-            <widget placeholder></widget>
+            <Widget placeholder/>
+            <Widget placeholder/>
         </div>
     </section>
     <section>
         <SectionTitle title="Cumulative Hashrate" icon="tag" />
         <div v-if="stats" class="flex-container">
-            <widget
+            <Widget
                 icon="signal_cellular_alt"
                 text="Current Hasrate"
                 color="blue"
                 :value="stats.currentHashrate / 1000000"
                 :options="{ prefix: 'MH/s ', duration: 1.5 }"
-            ></widget>
-            <widget
+            />
+            <Widget
                 icon="description"
                 text="Reported Hasrate"
                 color="blue"
                 :value="stats.reportedHashrate / 1000000"
                 :options="{ prefix: 'MH/s ', duration: 1.5 }"
-            ></widget>
+            />
         </div>
         <div v-else class="flex-container">
-            <widget placeholder></widget>
-            <widget placeholder></widget>
+            <Widget placeholder/>
+            <Widget placeholder/>
         </div>
     </section>
     <section>
         <SectionTitle title="Performance" icon="speed" />
         <div v-if="stats" class="flex-container">
-            <widget
+            <Widget
                 icon="thumb_up_alt"
                 text="Valid Shares"
                 color="green"
-                :value="stats.validShares"
+                :value="stats.validShares || 0"
                 :options="{ duration: 1.5 }"
-            ></widget>
-            <widget
+            />
+            <Widget
                 icon="thumb_down_alt"
                 text="Stale Shares"
                 color="orange"
-                :value="stats.staleShares"
+                :value="stats.staleShares || 0"
                 :options="{ duration: 1.5 }"
-            ></widget>
-            <widget
+            />
+            <Widget
                 icon="warning"
                 text="Invalid Shares"
                 color="red"
-                :value="stats.invalidShares"
+                :value="stats.invalidShares || 0"
                 :options="{ duration: 1.5 }"
-            ></widget>
+            />
         </div>
         <div v-else class="flex-container">
-            <widget placeholder></widget>
-            <widget placeholder></widget>
-            <widget placeholder></widget>
+            <Widget placeholder/>
+            <Widget placeholder/>
+            <Widget placeholder/>
         </div>
     </section>
 </template>

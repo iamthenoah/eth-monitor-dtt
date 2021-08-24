@@ -3,7 +3,7 @@
         <WorkersList
             @onSelectionChanged="onSelectionChanged($event)"
             :address="nameAndAddress[1] || ''"
-            :workers="workers || []"
+            :workers="workers"
         />
     </section>
     <section id="focus-worker-stats">
@@ -23,8 +23,8 @@
 import { defineComponent } from 'vue'
 import { Worker } from '@/apis/interfaces'
 import { fetchWorkers } from '@/apis/EthermineApi'
-import MiningStatistics from '@/views/home/details/MiningStatistics.vue'
-import WorkersList from '@/views/home/details/WorkersList.vue'
+import MiningStatistics from '@/components/containers/MiningStatistics.vue'
+import WorkersList from '@/components/containers/WorkersList.vue'
 import InfoBanner from '@/components/generics/InfoBanner.vue'
 import ErrorBox from '@/components/generics/ErrorBox.vue'
 
@@ -42,7 +42,7 @@ export default defineComponent({
         }
     },
     data () {
-        const workers: Worker[] = []
+        const workers: Worker[] = null as unknown as Worker[]
         const error: Error = null as unknown as Error
         const selectedWorker: Worker = null as unknown as Worker
 
@@ -50,9 +50,7 @@ export default defineComponent({
     },
     mounted () {
         const [name, address] = this.nameAndAddress
-        if (address && name) {
-            this.fetchData(address, name)
-        }
+        if (address && name) this.fetchData(address, name)
     },
     watch: {
         nameAndAddress: {

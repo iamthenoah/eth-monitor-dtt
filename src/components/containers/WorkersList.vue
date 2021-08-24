@@ -1,23 +1,28 @@
 <template>
     <section-title title="Workers" icon="engineering" id="focus-workers-list">
-        <button v-show="workers.length !== 0" class="btn outlined bg-primary" @click="sortByNextProperty()">
+        <button v-show="workers && workers.length !== 0" class="btn outlined bg-primary" @click="sortByNextProperty()">
             Sorted by {{ getFormatedProperyText }}
         </button>
     </section-title>
-    <div v-if="workers.length !== 0">
-        <listable-item
-            @click="$emit('onSelectionChanged', worker)"
-            v-for="(worker, index) in workers"
-            :key="worker.worker + index"
-            :title="worker.worker"
-            :redirectTo="`/workers/${address}/${worker.worker}`"
-            :comment="'@ ' + Math.round(worker.reportedHashrate / 1000000) + ' MH/s'"
-            icon="storage"
-        >
-            <Badge :text="worker.validShares" icon="thumb_up_alt" color="green" />
-            <Badge :text="worker.staleShares" icon="thumb_down_alt" color="orange" />
-            <Badge :text="worker.invalidShares" icon="warning" color="red" />
-        </listable-item>
+    <div v-if="workers" id="workers-list">
+        <div v-if="workers.length !== 0">
+            <listable-item
+                @click="$emit('onSelectionChanged', worker)"
+                v-for="(worker, index) in workers"
+                :key="worker.worker + index"
+                :title="worker.worker"
+                :redirectTo="`/workers/${address}/${worker.worker}`"
+                :comment="'@ ' + Math.round(worker.reportedHashrate / 1000000) + ' MH/s'"
+                icon="storage"
+            >
+                <Badge :text="worker.validShares" icon="thumb_up_alt" color="green" />
+                <Badge :text="worker.staleShares" icon="thumb_down_alt" color="orange" />
+                <Badge :text="worker.invalidShares" icon="warning" color="red" />
+            </listable-item>
+        </div>
+        <section v-else>
+            <h3 class="center">This Miner has no active Workers...</h3>
+        </section>
     </div>
     <div v-else>
         <listable-item placeholder><Badge placeholder /><Badge placeholder /><Badge placeholder /></listable-item>
@@ -46,21 +51,20 @@ export default defineComponent({
             required: true
         },
         workers: {
-            type: Array,
-            required: true
+            type: Object,
+            default: null
         }
     },
     data () {
         // used to dynamically set sortable worker properties from keys
         const sortableProperties: string[] = []
-
         return { sortableProperties, selectedPropertyIndex: 0 }
     },
     watch: {
         workers: {
             handler: function (workers) {
-                // when workers finished loading, fetch keys as props.
-                if (workers.length !== 0) this.sortableProperties = Object.keys(workers[0])
+                // when workers finished loading, fetch keys as sortable props.
+                if (workers && workers.length !== 0) this.sortableProperties = Object.keys(workers[0])
             }
         }
     },
@@ -78,8 +82,14 @@ export default defineComponent({
         },
         sortByNextProperty: function () {
             if (this.workers) {
-                const content = document.getElementById('focus-workers-list')
-                if (content) content.scrollIntoView()
+                const section = document.getElementById('focus-workers-list')
+                if (section) section.scrollIntoView()
+
+                const list = document.getElementById('workers-list')
+                if (list) {
+                    list.classList.add('fade-out-in')
+                    setTimeout(() => { list.classList.remove('fade-out-in') }, 200)
+                }
 
                 const nextIndex = this.getNextIndex()
                 const property = this.sortableProperties[nextIndex]
@@ -95,3 +105,17 @@ export default defineComponent({
     }
 })
 </script>
+
+<style scoped>
+
+    .fade-out-in {
+        animation: fade-out-in alternate-reverse ease-out 200ms forwards;
+    }
+
+    @keyframes fade-out-in {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+</style>
