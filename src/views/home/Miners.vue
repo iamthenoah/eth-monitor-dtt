@@ -41,8 +41,7 @@ export default defineComponent({
             isDataLoaded: true
         }
     },
-    mounted() { // eslint-disable-line
-
+    mounted () {
         // use random ETH addresses if not authed
         if (this.$store.getters.isAuthenticated) {
             const miners: Miner[] = this.$store.getters.User.miners
@@ -57,6 +56,7 @@ export default defineComponent({
         // ensure that route always has a :address param set
         if (!address) {
             this.$router.push('/miners/' + this.miningAddresses[0])
+            this.selectedAddress = this.miningAddresses[0]
         } else {
             this.selectedAddress = Array.isArray(address) ? address[0] : address
         }

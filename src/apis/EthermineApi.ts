@@ -37,15 +37,17 @@ export const fetchMiner = async (address: string) : Promise<Miner> => {
     return { address, workers, ...stats } as Miner
 }
 
-export type Currency = 'ETH' | 'BTC' | 'USD' | 'EUR' | 'AUD' | 'CHF' | 'CAD' | 'GBP'
+export const Currencies = ['ETH', 'BTC', 'USD', 'EUR', 'AUD', 'CHF', 'CAD', 'GBP']
+export type Currency = typeof Currencies[number]
 
-export type CurrencyIndex = [Currency, number];
+export const fetchEthValueByCurrency = async (currency: Currency) : Promise<[Currency, number]> => {
+    /* eslint-disable */
 
-export const fetchEthValueIndex = async () : Promise<CurrencyIndex[]> => {
-    // eslint-disable-next-line
-    let data = await EthPrice.getEthPriceNow() as Record<string, any>
-    // eslint-disable-next-line
-    data = Object.values(data)[0]['ETH']
-    data = { ...data, ETH: 1 }
-    return data as CurrencyIndex[]
+    const res = await EthPrice.getEthPriceNow() as Record<string, any>
+    const data: Record<Currency, number> = Object.values(res)[0]['ETH']
+
+    data['ETH'] = 1 // add default ETH multiplier
+
+    // return currency provided from paramters & its corresponding value
+    return [currency, data[currency] || data['ETH']]
 }
