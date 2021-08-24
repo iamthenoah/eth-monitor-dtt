@@ -3,9 +3,9 @@
         <div @click="toggleSideMenu()" id="mb">
             <span class="material-icons ui-icon">menu</span>
         </div>
-        <div class="input-icon-left" id="sb">
+        <div class="input-icon-left search-bar" id="sb">
             <span class="material-icons" @click="search()">search</span>
-            <input type="text" v-model="address">
+            <input type="text" v-model="address" placeholder="ETH address...">
         </div>
         <div id="aa" class="nav-auth-actions">
             <div v-if="isAuthenticated">
@@ -47,6 +47,7 @@ export default defineComponent({
     #aa { grid-area: aa; }
 
     .top-nav-container {
+        position: relative;
         padding: 10px;
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -60,12 +61,25 @@ export default defineComponent({
         float: left;
     }
 
-    @media only screen and (max-width: 600px) {
+    .search-bar {
+        position: absolute;
+        min-width: 300px;
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 750px) {
         .top-nav-container {
+            grid-template-columns: auto 1fr;
+            grid-template-rows: 1fr 1fr;
             gap: 5px;
             grid-template-areas:
                 "mb x aa"
                 "sb sb sb";
+        }
+
+        .search-bar {
+            position: relative;
+            width: 100%;
         }
     }
 
