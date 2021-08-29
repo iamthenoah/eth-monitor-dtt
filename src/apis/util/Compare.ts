@@ -2,7 +2,7 @@
 
 /**
  * Sort specified propery in given object T.
- * @param {String} property Property to compare
+ * @param {T} property Property to compare
  */
 export const sortBy = <T extends Record<string, unknown>>(property: keyof T) : (a: T, b: T) => number => {
     return (a: T, b: T) => {
