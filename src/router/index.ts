@@ -43,6 +43,11 @@ const routes: Array<RouteRecordRaw & ExtraRouteMetaData> = [
                 component: () => import('../views/home/Account.vue')
             },
             {
+                name: 'Information',
+                path: '/information',
+                component: () => import('../views/home/Information.vue')
+            },
+            {
                 name: 'Not Found',
                 path: '/:catchAll(.*)',
                 component: () => import('../views/error/NotFound.vue')

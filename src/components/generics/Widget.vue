@@ -1,5 +1,5 @@
 <template>
-    <div class="container screen rounded stat-container">
+    <div class="container screen rounded outline stat-container">
         <div :class="{ 'stat' : hasSlots }" class="widget-info">
             <div v-show="hasSlots">
                 <slot></slot>

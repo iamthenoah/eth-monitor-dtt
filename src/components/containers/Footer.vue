@@ -4,6 +4,7 @@
             <router-link to="/discover" class="center route-link">Discover</router-link>
             <router-link to="/miners" class="center route-link">Miners</router-link>
             <router-link to="/workers" class="center route-link">Workers</router-link>
+            <router-link to="/information" class="center route-link">Info</router-link>
             <router-link v-if="isAuthenticated" to="/account" class="center route-link">Account</router-link>
             <router-link v-else to="/authenticate/login?m=You clicked Login from the footer!" class="center route-link">Login</router-link>
         </div>

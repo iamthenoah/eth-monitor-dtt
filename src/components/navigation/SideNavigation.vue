@@ -22,6 +22,13 @@
                 icon="explore"
                 :selected="isCurrent('Discover')"
                 @click="toggleSideMenu(false)"
+            ></menu-button>
+            <menu-button
+                route="/information"
+                text="Information"
+                icon="help"
+                :selected="isCurrent('Information')"
+                @click="toggleSideMenu(false)"
             >
                 <Badge text="New!" color="red"/>
             </menu-button>
