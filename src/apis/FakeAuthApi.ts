@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { Miner, User } from './interfaces'
-import { randomInt } from './util/Format'
+import { randomInt } from './util'
 
 export type UserCredentials = { email: string; password: string }
 export type RegisterPayload = { email: string; passwords: string[] }
