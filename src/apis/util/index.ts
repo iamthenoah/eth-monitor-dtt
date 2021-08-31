@@ -24,7 +24,7 @@ export const unCamelCaseString = (camelCased: string) : string => {
 
 /**
  * Sort specified propery in given object T.
- * @param {T} property Property to compare.
+ * @param {string} property Property to compare.
  */
 export const sortBy = <T extends Record<string, unknown>>(property: keyof T) : (a: T, b: T) => number => {
     return (a: T, b: T) => {

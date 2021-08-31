@@ -5,20 +5,36 @@ import { randomInt } from './util'
 export type UserCredentials = { email: string; password: string }
 export type RegisterPayload = { email: string; passwords: string[] }
 
+/**
+ * Emulates a login request to an API.
+ * @param {UserCredentials} payload user credentials.
+ */
 export const fakeLoginApiCall = async (payload: UserCredentials) : Promise<User> => {
     return await fakeAuthApi(payload)
 }
 
+/**
+ * Emulates a registation request to an API.
+ * @param {RegisterPayload} payload user credentials.
+ */
 export const fakeRegisterApiCall = async (payload: RegisterPayload) : Promise<User> => {
     const { email, passwords } = payload
     return await fakeAuthApi({ email, password: passwords[0] })
 }
 
+/**
+ * Emulates a logout request to an API.
+ */
 export const fakeLogoutApiCall = async () : Promise<void> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return await new Promise((resolve, reject) => setTimeout(resolve, 1000))
 }
 
+/**
+ * Creates a `User` with random preferences using given credentials.
+ * Returns an error when invalid email/password is presented.
+ * @param {UserCredentials} payload user credentials.
+ */
 const fakeAuthApi = async (credentials: UserCredentials) : Promise<User> => {
     return await new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -52,6 +68,10 @@ const fakeAuthApi = async (credentials: UserCredentials) : Promise<User> => {
     })
 }
 
+/**
+ * Retreives a random set of valid ETH addresses.
+ * @param {number} count address count.
+ */
 export const getRandomAddresses = (count: number = randomInt(1, randomAddresses.length - 1)) : string[] => {
     const addresses: string[] = []
     for (let i = 0; i < count; i++) {
